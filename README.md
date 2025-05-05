@@ -55,7 +55,7 @@ pip install -r requirements.txt
    ![7ceb9a7d-cec0-49b2-9202-5dbd5ea97e50](https://github.com/user-attachments/assets/76604923-9918-45bd-831a-b8a0aec8d648)
 
 
-   
+   是base64 二进制的数据  从Reqable 下载出来就是这个样子  技术有限 自己琢磨吧
    如上图所示，确保视频文件已正确放置在指定目录。
 
 3. 运行程序：
