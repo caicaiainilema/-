@@ -1,4 +1,4 @@
-# 识别验证系统
+![image](https://github.com/user-attachments/assets/78b175bb-189e-4f04-b57a-0016f0384a97)# 识别验证系统
 
 ## 项目说明
 这是一个用于完成识别验证的自动化系统，主要用于处理特定平台的身份验证流程。系统通过模拟用户操作，自动完成登录、认证和识别等步骤。
@@ -37,8 +37,9 @@ pip install -r requirements.txt
    ```
    C:\Users\Administrator\AppData\Roaming\Reqable\tmp\d4b726c0-d35d-4bff-bf88-982ffd8a1bec
    ```
-   
-   ![视频文件示例](image.png)
+   ![7ceb9a7d-cec0-49b2-9202-5dbd5ea97e50](https://github.com/user-attachments/assets/76604923-9918-45bd-831a-b8a0aec8d648)
+
+
    
    如上图所示，确保视频文件已正确放置在指定目录。
 
