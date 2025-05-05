@@ -57,7 +57,7 @@ def main():
         login_token = login_result.get("data", {}).get("accessToken")
         logging.info(f"登录token: {login_token}")
 
-        # 获取实名信息
+        # 获取信息
         airdrop_url = "https://urgwgoskun.sfuzcgddzr.com/api/index/getAirdrop?lang=zh_CN"
         airdrop_headers = {
             "Authorization": login_token,
@@ -67,38 +67,38 @@ def main():
         }
 
         airdrop_response = requests.get(airdrop_url, headers=airdrop_headers)
-        logging.info(f"实名信息请求状态码: {airdrop_response.status_code}")
-        logging.info(f"实名信息请求头: {airdrop_headers}")
+        logging.info(f"信息请求状态码: {airdrop_response.status_code}")
+        logging.info(f"信息请求头: {airdrop_headers}")
         airdrop_result = airdrop_response.json()
-        logging.info(f"获取实名信息响应: {airdrop_result}")
+        logging.info(f"获取信息响应: {airdrop_result}")
         
         if not airdrop_result.get("data"):
-            logging.error("实名信息响应中没有data字段")
-            raise Exception("获取实名信息失败：响应中没有data字段")
+            logging.error("信息响应中没有data字段")
+            raise Exception("获取信息失败：响应中没有data字段")
             
         auth_token = airdrop_result.get("data", {}).get("token")
         urls = airdrop_result.get("data", {}).get("urls", [])
         
         if not auth_token:
-            logging.error("实名token获取失败")
-            raise Exception("获取实名token失败")
+            logging.error("token获取失败")
+            raise Exception("获取token失败")
             
         if not urls:
-            logging.error("实名URL获取失败")
-            raise Exception("获取实名URL失败")
+            logging.error("URL获取失败")
+            raise Exception("获取URL失败")
             
         # 从第一个URL中提取ID
         first_url = urls[0]
         auth_id = first_url.split("id=")[1].split("&")[0] if "id=" in first_url else None
         
         if not auth_id:
-            logging.error("从URL中提取实名ID失败")
-            raise Exception("从URL中提取实名ID失败")
+            logging.error("从URL中提取ID失败")
+            raise Exception("从URL中提取ID失败")
             
-        logging.info(f"实名token: {auth_token}")
-        logging.info(f"实名ID: {auth_id}")
+        logging.info(f"token: {auth_token}")
+        logging.info(f"ID: {auth_id}")
 
-        # 上传身份证信息
+        # 上传信息
         kyc_url = "https://api.ttx.vip/api/v1/act/kyc/auth"
         kyc_data = {
             "activityId": auth_id,
@@ -133,7 +133,7 @@ def main():
         biz_id = kyc_result.get("data", {}).get("biz_id")
         face_token = kyc_result.get("data", {}).get("token")
         logging.info(f"业务ID: {biz_id}")
-        logging.info(f"人脸识别token: {face_token}")
+        logging.info(f"识别token: {face_token}")
 
         # 获取用户信息
         user_info_url = f"https://api-idn.megvii.com/faceid/lite/get_user_info?token={face_token}"
@@ -161,7 +161,7 @@ def main():
             raise Exception("获取biz_id失败")
         logging.info(f"验证业务ID: {verify_biz}")
 
-        # 上传人脸照片
+        # 上传视频
         face_url = "https://api-idn.megvii.com/faceid/lite/still"
         face_headers = {
             'User-Agent': "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1 Edg/135.0.0.0",
@@ -176,7 +176,7 @@ def main():
             'priority': "u=1, i"
         }
 
-        # 读取人脸照片文件
+        # 读取视频文件
         file_path = r"C:\Users\Administrator\AppData\Roaming\Reqable\tmp\d4b726c0-d35d-4bff-bf88-982ffd8a1bec"
         try:
             with open(file_path, 'rb') as f:
